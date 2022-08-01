@@ -6,4 +6,4 @@
 
 // In async, as can be seen, the task and the next task starts parrally
 
-// alternative - async wait and caallback
+// alternative - async wait and callback
