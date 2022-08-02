@@ -1,23 +1,27 @@
 {
-  "name": "NodeJS-Baisc",
-  "version": "1.0.0",
-  "description": "NodeJS from scratch",
-  "main": "1-globals.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/srishtiparti/NodeJS-Baisc.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/srishtiparti/NodeJS-Baisc/issues"
-  },
-  "homepage": "https://github.com/srishtiparti/NodeJS-Baisc#readme",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  }
+    "name": "NodeJS-Baisc",
+    "version": "1.0.0",
+    "description": "NodeJS from scratch",
+    "main": "1-globals.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/srishtiparti/NodeJS-Baisc.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/srishtiparti/NodeJS-Baisc/issues"
+    },
+    "homepage": "https://github.com/srishtiparti/NodeJS-Baisc#readme",
+    "dependencies": {
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    }
 }
