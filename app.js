@@ -1,9 +1,6 @@
-// Difference between Async and sync -
+const _ = require('lodash');
 
-// In sync - the JS reads each line. If user is using the second 
-// file. It wouldn't go to the next step until they have finished it
-// This creates lag
+const items = [1, [2, [3, [4]]]]
 
-// In async, as can be seen, the task and the next task starts parrally
-
-// alternative - async wait and caallback
+const newItems = _.flattenDeep(items)
+console.log(newItems)
