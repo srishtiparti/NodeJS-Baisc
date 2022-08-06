@@ -13,15 +13,12 @@ const getText = (path) => {
     })
 }
 
-// use async await to wait for promise to be settled
-const start = async() => {
-    try {
-        const first = await getText('./content/first.txt')
-        const second = await getText('./content/second.txt')
-        console.log(first, second)
-    } catch (error) {
-        console.log(error)
-    }
-}
+getText('./content/first.txt')
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err))
 
-start()
+
+// as can be seen this is executed first and then the call back function
+getText('.../content/first.txt')
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err))

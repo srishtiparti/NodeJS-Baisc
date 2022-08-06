@@ -9,3 +9,14 @@
 
 // instead of typing node app.js just type npm start
 //  to start nodemon - npm run dev to restart your app
+// or install nodemon - npm install -g nodemon 
+// globally - npx install -g nodemon 
+// run nodemon app.js
+
+const _ = require('lodash');
+
+const items = [1, [2, [3, [4]]]]
+
+const newItems = _.flattenDeep(items)
+console.log(newItems)
+console.log("Hello World")
