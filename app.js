@@ -1,27 +1,9 @@
-const { readFile } = require('fs');
+// Event Emitter 
+// on- listen for an event
+// emit - emit an event
 
-// lets create a function for promise
-const getText = (path) => {
-    return new Promise((resolve, reject) => {
-        readFile(path, 'utf8', (err, data) => {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(data)
-            }
-        })
-    })
-}
 
-// use async await to wait for promise to be settled
-const start = async() => {
-    try {
-        const first = await getText('./content/first.txt')
-        const second = await getText('./content/second.txt')
-        console.log(first, second)
-    } catch (error) {
-        console.log(error)
-    }
-}
+const EventEmitter = require('events');
 
-start()
+
+const customemitter = new EventEmitter()
