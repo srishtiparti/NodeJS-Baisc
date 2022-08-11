@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/srishtiparti/NodeJS-Baisc#readme",
     "dependencies": {
+        "express": "^4.18.1",
         "lodash": "^4.17.21"
     },
     "devDependencies": {

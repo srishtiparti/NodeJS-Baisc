@@ -1,7 +1,11 @@
 // Header
 
 const http = require('http');
-const { off } = require('process');
+const { readFileSync } = require('fs');
+
+// getting the homepage
+const homePage = readFileSync('./express-node/Nav-bar/index.html')
+const home = readFileSync('./express-node/html-files/index.html')
 
 const server = http.createServer((req, res) => {
 
@@ -14,8 +18,13 @@ const server = http.createServer((req, res) => {
         const url = req.url;
         // user req homepage
         if (url === '/') {
+            // it only gives html we are noy handling /styles / js etc.
             res.writeHead(200, { 'content-type': 'text/html' })
-            res.write('<h1>Hello My Friends</h1>')
+            res.write(homePage)
+            res.end()
+        } else if (url === '/home') {
+            res.writeHead(200, { 'content-type': 'text/html' })
+            res.write(home)
             res.end()
         }
 
