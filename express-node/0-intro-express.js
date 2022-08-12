@@ -20,6 +20,8 @@ const app = express()
 // app.all -
 
 
+
+
 // API - setting up an http interface to interact with data
 // data is sent using JSON
 // To send res.json()
@@ -34,9 +36,17 @@ const app = express()
 // things that can be used
 // req.param
 // req.query
+// req.url
+// req.method
 // res.status().send()
 // res.sendFile - to send file on server
-//  res.json - to send json data (check json and json API)
+// res.json - to send json data (check json and json API)
+
+
+// *** YOU CANNOT SEND MORE THAN 1 RESPONSE FOR A SINGLE REQUEST***
+// that measn you cannot use res.send()/res.json() twice for a request
+// use return instead
+// if(...){return res(....)} res(...)
 
 // ********* To render a file through server **********
 // import path using method path
@@ -66,3 +76,21 @@ const app = express()
 // Return that value. Similar to query but can be done in various parts of url
 // api/v1/:productName/reviews/:productReview
 // res.json
+
+// **** Middleware ****
+// functions that executes at the request of the server
+// each middleware has access to req, res of the object
+// req => middleware => res
+// MIDDLEWARE NEEDS TO SEND RESPONSE
+// you can create function with params req,res,next
+// the next passes the res to next res as the middleware must response and sometimes we don't want to show data
+//  eg const logger =(req,res,nect)=>{....... next()}
+// Its always better to create middleware in different files
+// Use module.export and require to communicate
+// Apply a module to all urls
+// const module_name = require("./module_path")
+// app.use(module_name)
+//  MIDDLEWARE FUNCTIONS NEEDS TO BE ON TOP IN ORDER TO BE EXCECUTED IN ALL URLS
+//  iF you only want it for some certain urls
+// app.use('/api',logger)
+//  it will apply to all paths which have /api or /api/ in them
