@@ -10,13 +10,16 @@ const app = express()
 
 // Methods used in express
 
-// app.get - read data
+// app.get - read data eg - get all orders
 // app.get('/',(req,res)=>{})
+// app.get(www.store.com/api/:id) - get single order(path params)
 // app.listen
-// app.post - insert data
+// app.post - insert data plan an order (send data)
+// app.put (www.store.com/api/:id) -update specific orer(params + send data)
 // app.put - update data
 // app.use - used for setting up middleware
 // app.delete - delete data
+// app.delete (www.store.com/api/:id) delete order (path params)
 // app.all -
 
 
@@ -94,3 +97,10 @@ const app = express()
 //  iF you only want it for some certain urls
 // app.use('/api',logger)
 //  it will apply to all paths which have /api or /api/ in them
+
+// ************* third party middleware **************
+// morgan
+// npm i morgan
+// var morgan = require('morgan)
+// using a predefined format string - morgan
+// app.use(morgan('tiny')) - just gives the basic information

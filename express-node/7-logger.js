@@ -1,4 +1,4 @@
-function logger(req, res, next) {
+const logger = (req, res, next) => {
     const method = req.method
     const url = req.url
     const time = new Date().getFullYear()
@@ -7,4 +7,4 @@ function logger(req, res, next) {
     next() //lets pass it to next response
 }
 
-module.exports = logger()
+module.exports = logger

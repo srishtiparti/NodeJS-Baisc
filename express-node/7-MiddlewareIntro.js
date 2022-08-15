@@ -2,8 +2,6 @@ const express = require("express");
 const app = express()
 const logger = require('./logger')
 
-// aPply it to all urls
-app.use(logger)
 app.get('/', logger, (req, res) => {
     res.send('Home')
 })
