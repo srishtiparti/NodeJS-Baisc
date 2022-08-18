@@ -4,3 +4,5 @@ const notes = [
     { id: 3, data: "Build birdhouse" },
     { id: 4, data: "Clean garage before afternoon nap" }
 ]
+
+module.exports = { notes }
