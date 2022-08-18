@@ -6,6 +6,7 @@ const { people } = require('./data')
 app.use(express.static('./methods-public'))
     // parse form data
 app.use(express.urlencoded({ extended: false }))
+
 app.post('/login', (req, res) => {
     const { name } = req.body;
     if (name) {

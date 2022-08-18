@@ -104,3 +104,18 @@ const app = express()
 // var morgan = require('morgan)
 // using a predefined format string - morgan
 // app.use(morgan('tiny')) - just gives the basic information
+
+// ****************** Get Method ********************
+// Just getting the information
+// eg res.json({success:true,data:people})
+
+// ****************** Post Method *********************
+// Posting data on website
+// We use middleware such as app.use
+// // static assets
+// app.use(express.static('./methods-public'))
+//     // parse form data
+// app.use(express.urlencoded({ extended: false })) 
+
+// *********************** Updating in database using post or posting the data in frontend**************
+// app.use(express.json()) to parse json
