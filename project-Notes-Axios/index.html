@@ -16,7 +16,7 @@
         <h1>Add To Do List</h1>
         <p class="alert"></p>
         <label class="form-input" for="name">Enter Task</label><br>
-        <input id="name" name="name" class="form-input" placeholder="e.g Use Axios" autocomplete="false">
+        <input id="name" name="name" class="form-input formInput" placeholder="e.g Use Axios" autocomplete="false">
         <button class="submitButton">Submit</button>
         <div class="todoItems">
             <ul class="displayItem">
@@ -27,6 +27,8 @@
     <script>
         const displayItem = document.querySelector('.displayItem')
         const alert = document.querySelector('.alert')
+        const btn = document.querySelector('.submitButton')
+        const input = document.querySelector('.formInput')
 
         const fetchItems = async() => {
             try {
@@ -35,7 +37,7 @@
                 } = await axios.get('/api/notes')
                 const notes = data.data.map((note) => {
                     console.log(note.data)
-                    return `<li>${note}</li>`
+                    return `<li>${note.data}</li>`
                 })
                 displayItem.innerHTML = notes.join('')
             } catch (error) {
@@ -43,6 +45,29 @@
             }
         }
         fetchItems()
+        btn.addEventListener('click', async(e) => {
+            console.log(input.value)
+            e.preventDefault()
+            const taskName = input.value
+            try {
+                // this data is the inbuilt element that we get in response fom API. It is not the declared data!!!
+                const {
+                    // this is the data that we declared in the app.get and the database!!! Change the name and it shall work
+                    data
+                } = await axios.post('/api/notes', {
+                    data: taskName
+                })
+
+                const li = document.createElement('li')
+                li.innerText = data.task
+                displayItem.appendChild(li)
+
+            } catch (error) {
+                console.log(error.response.data)
+                alert.textContent = error.response.data.msg
+            }
+            input.value = ''
+        })
     </script>
 </body>
 

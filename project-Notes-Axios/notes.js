@@ -1,8 +1,8 @@
 const notes = [
-    { id: 1, data: "Bring milk" },
-    { id: 2, data: "Feed Casper" },
-    { id: 3, data: "Build birdhouse" },
-    { id: 4, data: "Clean garage before afternoon nap" }
+    { id: 1, data: "Axios to send async HTTP request" },
+    { id: 2, data: "Await to wait for promise" },
+    { id: 3, data: "Use async to return promise" },
+    { id: 4, data: "Use get, post and put method" }
 ]
 
 module.exports = { notes }
