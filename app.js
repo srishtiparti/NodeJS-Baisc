@@ -1,20 +1,25 @@
-// Set up Routers
+const express = require('express')
+const app = express();
+const tasks = require('./1-Project-Task-Manager/routes/task')
+const port = 3000
 
-const express = require("express");
-const app = express()
+const connectDB = require('./1-Project-Task-Manager/starter/DB/connect')
 
-const people = require('./express-node/routes/people')
-const login = require('./express-node/routes/auth')
-    // static assets
-app.use(express.static('./methods-public'))
 
-// parse json
+// middleware
 app.use(express.json())
+    // app.use(express.static('./1-Project-Task-Manager/'))
 
-app.use('/api/people', people)
-app.use('/login', login)
+app.use('/api/v1/tasks', tasks)
 
+const start = async() => {
+    try {
+        await connectDB()
+        app.listen(port, console.log(`server is listening on port ${port} `))
+        app
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-app.listen(5020, () => {
-    console.log('Server is listening to port 5020');
-})
+start()

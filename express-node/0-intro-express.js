@@ -22,6 +22,9 @@ const app = express()
 // app.delete (www.store.com/api/:id) delete order (path params)
 // app.all -
 
+// Connect to DB first - use refractor
+
+
 
 
 
