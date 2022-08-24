@@ -122,3 +122,8 @@ const app = express()
 
 // *********************** Updating in database using post or posting the data in frontend**************
 // app.use(express.json()) to parse json
+
+/******************* Put vs Patch *********************/
+// both are used to update data
+// put is used when everything, all params need to be updated // complete update
+// patch is used when selected params need to be updated // partial update

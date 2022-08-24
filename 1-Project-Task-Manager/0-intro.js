@@ -131,3 +131,9 @@
 // get single task app.get("/:id")
 // update task app.patch('/:id')
 // delete task app.delete('/:id')
+
+
+/******************* Put vs Patch *********************/
+// both are used to update data
+// put is used when everything, all params need to be updated // complete update
+// patch is used when selected params need to be updated // partial update

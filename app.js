@@ -8,8 +8,9 @@ require('dotenv').config()
 
 // middleware
 app.use(express.json())
-    // app.use(express.static('./1-Project-Task-Manager/'))
+app.use(express.static('./1-Project-Task-Manager/starter/public'))
 
+// routes
 app.use('/api/v1/tasks', tasks)
 
 const start = async() => {
