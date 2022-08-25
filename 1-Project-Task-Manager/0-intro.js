@@ -137,3 +137,18 @@
 // both are used to update data
 // put is used when everything, all params need to be updated // complete update
 // patch is used when selected params need to be updated // partial update
+
+/**********************  Customize 404 error *******************************/
+// create a middleware
+// import in server
+
+/******************* async wrapper *********************************/
+// Instead of using try and catch for all functions, just use it in middleware and import it in controller
+
+/********************** Customize error handler *****************/
+// Express has default error handling
+// For more info -https://expressjs.com/en/guide/error-handling.html
+// eg -app.get('/user/:id', async (req, res, next) => {
+//   const user = await getUserById(req.params.id)
+//   res.send(user)
+// })

@@ -1,5 +1,4 @@
 const express = require('express');
-const { identity } = require('lodash');
 const app = express()
 const { notes } = require('./project-Notes-Axios/notes')
 
