@@ -1,27 +1,24 @@
 const express = require('express')
-const app = express();
-const tasks = require('./1-Project-Task-Manager/routes/task')
+const app = express()
+const books = require('./2-Project-Bookclub/routes/task')
 
-// Setting up port value
-// const port = process.env.PORT || 3000
-const port = 3000
-
-
-const connectDB = require('./1-Project-Task-Manager/starter/DB/connect')
+/***********************  Database  ******************************************/
+const connectDB = require('./2-Project-Bookclub/DB/connectDB')
 require('dotenv').config()
-const notFound = require('./1-Project-Task-Manager/starter/middleware/not-found')
-const errorHandlerMiddleware = require('./1-Project-Task-Manager/starter/middleware/error-handler')
-    // middleware
+
+/***********************  Port  ******************************************/
+const port = 6000
+
+/***********************  Middleware  ******************************************/
 app.use(express.json())
-app.use(express.static('./1-Project-Task-Manager/starter/public'))
+app.use(express.static('./2-Project-Bookclub/public'))
 
-// routes
-app.use('/api/v1/tasks', tasks)
 
-// handling 404 errors
-app.use(notFound)
-app.use(errorHandlerMiddleware)
+/***********************  Routes  ******************************************/
+app.use('/api/v1/books', books)
 
+
+/***********************  Connecting to DB first before listening  ******************************************/
 const start = async() => {
     try {
         await connectDB(process.env.MONGO_URI)

@@ -8,20 +8,20 @@
 :root {
     /* COLORS  */
     /* primary */
-    --primary-0: #f0efff;
-    --primary-50: #d8d6ff;
-    --primary-100: #c1beff;
-    --primary-200: #aaa5ff;
-    --primary-300: #938dff;
-    --primary-400: #7b74ff;
+    --primary-0: #f7dbef;
+    --primary-50: #edbde7;
+    --primary-100: #e9a4c9;
+    --primary-200: #eb92cc;
+    --primary-300: #e87be2;
+    --primary-400: #d15aa3;
     /* main */
-    --primary-500: #645cff;
-    --primary-600: #554ed9;
-    --primary-700: #4640b3;
-    --primary-800: #37338c;
-    --primary-900: #282566;
-    --primary-1000: #191740;
-    --primary-1100: #0a0919;
+    --primary-500: #b142a6;
+    --primary-600: #af4183;
+    --primary-700: #a1389c;
+    --primary-800: #883670;
+    --primary-900: #571c47;
+    --primary-1000: #3f1134;
+    --primary-1100: #1b0816;
     /* grey */
     --grey-0: #fafbfc;
     --grey-50: #f2f4f8;

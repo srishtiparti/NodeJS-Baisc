@@ -4,7 +4,7 @@ const tasks = require('./1-Project-Task-Manager/routes/task')
 
 // Setting up port value
 // const port = process.env.PORT || 3000
-const port = 3000
+const port = 4000
 
 
 const connectDB = require('./1-Project-Task-Manager/starter/DB/connect')
