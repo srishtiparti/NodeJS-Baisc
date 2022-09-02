@@ -87,10 +87,10 @@
 // Model.updateOne()
 
 // Read
-// Get all documents - Model.find()
+// Get all documents - Model.find({})
 
 // get single task
-// Model.findOne()
+// Model.findOne({key:value})
 // Get the param id that needs to be looked up
 // use findOne with await
 // If you're looking for id.. use _id: in findOne to avoid error
@@ -98,11 +98,12 @@
 // If the id is not in format, has less/more digits - its 500 - get the error for the mongoose
 
 // Delete task
+// find the param (from url)
 // await Character.findOneAndDelete({ name: 'Eddard Stark' }); // returns {deletedCount: 1}
 
 // Update Task
 // Find the task
-// findOneAndUpdate({key: 'value',req.body,options})
+// Model.findOneAndUpdate({key: 'value'},req.body,options)
 // options are used because old values are visible
 // in order to update the original value and run validators
 // options look like - {new:true, runValidators: true,}
