@@ -140,11 +140,21 @@
 // patch is used when selected params need to be updated // partial update
 
 /**********************  Customize 404 error *******************************/
-// create a middleware
-// import in server
+// create a middleware - not found
+// import in server -
+// const notFound = require(not_found_path)
+// app.use(notFund)
+// route doesn't exist
+// when we try entering a url that doesn't have value
 
 /******************* async wrapper *********************************/
 // Instead of using try and catch for all functions, just use it in middleware and import it in controller
+
+/*******************  500 error -Invalid request  *************************************************/
+// these are the errors that we get in catch - Id isn't in the right format etc
+// create file middleware - error handler with res.status(500).({msg:""})
+// import errorHandlerMiddleware = path_of_error_handler
+// app.use(erroHandlerMiddleware)
 
 /********************** Customize error handler *****************/
 // Express has default error handling
@@ -153,3 +163,14 @@
 //   const user = await getUserById(req.params.id)
 //   res.send(user)
 // })
+// Create a class CustomAPIError extend Error{
+// constructor(message, statusCode){ 
+// super(message)
+// this.statusCode = statusCode
+// }   
+// }
+// Create a function to return the msg and the code
+// const createCustomError = (msg,code)=>{ return new CustomAPIError(msg,code)}
+// module.exports ={ createCustomError, CustomAPIError }
+// import it in controller by calling createCustomError
+// instead of sending same msg, use class
