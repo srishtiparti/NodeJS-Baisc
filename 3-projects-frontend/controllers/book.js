@@ -1,4 +1,4 @@
-const Book = require('../models/task')
+const Book = require('../models/book')
 const { createCustomError } = require('../errors/customAPIError')
 const asyncWrapper = require('../middleware/async')
 

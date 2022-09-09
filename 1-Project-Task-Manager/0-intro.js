@@ -174,3 +174,11 @@
 // module.exports ={ createCustomError, CustomAPIError }
 // import it in controller by calling createCustomError
 // instead of sending same msg, use class
+
+/********************** Get Id from url *****************/
+// const params = window.location.search
+// const id = new URLSearchParams(params).get('id')
+
+/********************** To do what async wrapper does we use express-async-erros*****************/
+// npm install express-async-errors
+// import it in app.js

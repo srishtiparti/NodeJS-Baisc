@@ -1,16 +1,16 @@
 const express = require('express')
 const app = express()
-const products = require('./4-Store-API/routes/products')
-const notFound = require('./4-Store-API/middleware/not-found')
-const errorHandlerMiddleware = require('./4-Store-API/middleware/error-handler')
-require('express-async-errors')
+const books = require('./3-projects-frontend/routes/task')
+const notFound = require('./3-projects-frontend/middleware/not-found')
+const errorHandlerMiddleware = require('./3-projects-frontend/middleware/errorHandler')
 
 
 /***********************  Database  ******************************************/
-const connectDB = require('./3-projects-frontend/db/connect')
+const connectDB = require('./3-projects-frontend/DB/connect')
 require('dotenv').config()
 
 /***********************  Middleware  ******************************************/
+app.use(express.static('./3-projects-frontend/public'))
 app.use(express.json())
     // for 404 error
     //app.use(notFound)
@@ -18,7 +18,7 @@ app.use(express.json())
 app.use(errorHandlerMiddleware)
 
 /***********************  Routes  ******************************************/
-app.use('/api/v1/products', products)
+app.use('/api/v1', books)
 port = 3000
 
 /***********************  Connecting to DB first before listening  ******************************************/
