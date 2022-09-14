@@ -51,3 +51,62 @@
 // }
 
 // const products = await Product.find(queryObject)
+
+// ********* Name Query ******
+// When entering someting, we want to return something that is clode, so we use MongoDb query operator (google it)
+// we'll use regex -$regex case insensitive -    const search = 'a'
+// const products = await Product.find({ name: { $regex: search, $options: 'i' } })
+
+// ************* Sort ************************
+// When sorting (ascending) = {{URL}}/products?sort=name
+// When sorting (opposite) = {{URL}}/products?sort=-name
+// When sorting more than one option - {{URL}}/products?sort=name,price
+// In the code we'll use queries from mongoose
+// Person.
+//   find({
+//     occupation: /host/,
+//     'name.last': 'Ghost',
+//     age: { $gt: 17, $lt: 66 },
+//     likes: { $in: ['vaporizing', 'talking'] }
+//   }).
+//   limit(10).
+//   sort({ occupation: -1 }).
+//   select({ name: 1, occupation: 1 }).
+//   exec(callback);
+
+// When we want to sort, they are called together by user with the output object.
+// We are awaiting output object first though
+// Option 1- we'll have to remove the await
+//     let result = Product.find(queryObject)
+// if(sort){
+//     products = product.sort()
+// }
+// const products = await result
+// await gives back instant result, we don't want that, we want to sort first
+// sort needs to be in the end
+// let result = Product.find(queryObject)
+// if (sort) {
+//     const sortList = sort.split(',').join(' ')
+//     result = result.sort(sortList)
+// } else {
+//     result = result.sort('createdAt')
+// }
+// const products = await result
+
+/********************** Select Options ************************/
+// Select fields -Only want to see certain fields
+// const products = await Product.find({}).select('name price')
+//     if (fields) {
+//     const fieldList = fields.split(',').join(' ')
+//     result = result.select(fieldList)
+// }
+
+/********************** Skip and limits ************************/
+//  const products = await Product.find({}).sort('name')
+// .select('name price')
+// .limit(10)
+// .skip(1)
+//  Pagination - skipping to that page (we'll use skip and pagination)
+//  This is how we create pages
+
+/**********************  Numeric filter  *********************/
