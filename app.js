@@ -3,7 +3,6 @@ const app = express()
 const routes = require('./5-JWT/routes/main')
 
 require('express-async-errors')
-
 const notFoundMiddleware = require('./5-JWT/middleware/not-found');
 const errorHandlerMiddleware = require('./5-JWT/middleware/error-handler');
 
