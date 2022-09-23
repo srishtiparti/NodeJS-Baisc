@@ -3,6 +3,8 @@
 // send back to front-end
 //  only the request with jwt can access the dashboard
 
+// To remove token from local storage-> application- local storage-> (delete is on top right)
+
 // JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way 
 // for securely transmitting information between parties as a JSON object. This information can be 
 // verified and trusted because it is digitally signed.
@@ -63,3 +65,7 @@
 // Create error classes by inheriting CustomAPIErrors for different error codes
 
 // *********************Install http-status-codes*********************
+// import StatusCodes from http-status codes - const {StatusCode} = require('http-status-codes')
+// this.statusCode = StatusCode.Bad_Request (for 400)... etc
+
+// Once error classes have been created, they need to be linked to middlewares, controllers and app.js
