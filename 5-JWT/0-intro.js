@@ -52,3 +52,14 @@
 
 // Auth middleware - multiple codes will use this functionality
 // Therefore, it's important to have this as a middleware, so that it can be reused
+// In the auth middleware we require jsonwebtoken and customAPIError
+// We get the token from auth header = req.headers.authorization
+// Check if its empty or if doesn't start with bearer - throw error with status code 401
+// try to decode the token using - jwt.verify(token, process.env.JWT_SECRET)
+// Store the decoded data in new object (user/variable) = req.object/req.user
+// In case the token is incorrect, catch the error and throw 401
+// next() // very important or it won't go to the next middleware
+
+// Create error classes by inheriting CustomAPIErrors for different error codes
+
+// *********************Install http-status-codes*********************

@@ -19,6 +19,7 @@ console.log("first file for node")
 
 // **********      const{}          *******
 // const {} - it is ES6 destructuring assignment
+// It means - const {function} = require{'module'} = import function from module 
 // instead of writing
 // we have an obj const obj = {name :"joe", age:"33"}
 // old fashion java way -
