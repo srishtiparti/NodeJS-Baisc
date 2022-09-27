@@ -1,0 +1,61 @@
+auth ->
+register
+
+login
+
+jobs->
+get job
+
+update job
+
+post job
+
+delete job
+
+models-
+Mongoose has built-in validators that can be used. We won't require to come up with logic for regex
+
+### Register Route
+
+- Validate - name, email, password - with Mongoose
+- Hash password (with bcryptjs)
+- Save user
+- Create token
+- Send response with token
+
+### store password - never store user password as strings - use hash
+- npm install bcryptjs
+    const { username, email, password } = req.body
+<!-- When we were doing through controller -->
+<!-- random  bytes= how many bytes it would get-->
+    const {username, password, email} = req.body
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt)
+
+    const tempUser = { username, email, password: hashedPassword }
+
+    // const user = await User.create(req.body)
+    // for mongoose to do validation
+    const user = await User.create({...tempUser })
+
+### Mongoose Middleware - pre post
+pre middleware functions are executed one after the another, when each middleware calls next
+const schema = new Schema(..);
+schema.pre('save', function(next) {
+  // do stuff
+  next();
+});
+
+But when we pass the input through schema/ middleware -> we just need to enter this in the schema
+
+userSchema.pre('save',function(next){
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(password,salt)
+    next()
+})
+you can also remove next as we are using mongoose 5x version
+we can remove the hashing code in the controller as now we are passing it through out schema
+
+
+
+
