@@ -89,3 +89,43 @@ throw badrequest error if email or password is missing
 throw unauth error if the email isn't registered
 if email is registered... create a token
 display username -> name:user.username
+
+### compare passwords
+use bcryptjs library - 
+In schema you can create another instance 
+
+### Auth middleware
+same as jwt project..
+to look what we'll have in payload.. check model
+
+to use the auth - as we don't want people with UA access to the job to see it
+We can have for each of the Route
+or can add to main app.js
+
+### Jobs Model
+We have company, position and status
+But to tie it a user we can use a attribute that is linked to the user model
+it must have 
+type:mongoose.Types.ObjectId,
+ref:'User'  
+
+### Create job - post
+to post.. we used Job.create(req.body)
+but in body we need to set the user
+the user is going to be in the token - userId
+req.body.createdBy = req.user.userId
+
+### get all jobs
+Job.find(createdBy:req.body.userId).sort(createdAt)
+
+### set token dynamically 
+in Postman
+in login - go to tests
+const jsonData = pm.response.json();
+pm.globals.set("accessToken",jsonData.token);
+
+go to jobs route - instead of selecting the authorization manually,
+go to auth - set type to bearer token
+in token - enter {accessToken}
+
+### get single jobs
