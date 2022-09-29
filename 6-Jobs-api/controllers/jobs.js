@@ -9,7 +9,13 @@ const getAllJobs = async(req, res) => {
 }
 
 const getJob = async(req, res) => {
-    res.send('register a single job')
+    const { id: jobId } = req.params
+    const { userId } = req.user
+    const job = await Job.findOne({ _id: jobId, createdBy: userId }).exec()
+    if (!job) {
+        throw new NotFoundError('wrong path')
+    }
+    res.status(StatusCodes.OK).json({ job })
 }
 
 
@@ -20,10 +26,36 @@ const createJob = async(req, res) => {
 }
 
 const updateJob = async(req, res) => {
-    res.send('update a job')
+    const {
+        body: { company, position },
+        user: { userId },
+        params: { id: jobId }
+    } = req
+
+    if (company === "" || position === '') {
+        throw new BadRequestError('Please enter required data')
+    }
+
+
+    const job = await Job.findOneAndUpdate({ _id: jobId, createdBy: userId }, req.body, { new: true, runValidators: true })
+    if (!job) {
+        throw new NotFoundError('No job found')
+    }
+    res.status(StatusCodes.OK).json({ job })
+
 }
 const deleteJob = async(req, res) => {
-    res.send('delete a job')
+    const {
+        user: { userId },
+        params: { id: jobId }
+    } = req
+
+    const job = await Job.findOneAndDelete({ _id: jobId, createdBy: userId })
+    if (!job) {
+        throw new NotFoundError('No job found')
+    }
+    res.status(StatusCodes.OK).json({ job })
+
 }
 module.exports = {
     getAllJobs,

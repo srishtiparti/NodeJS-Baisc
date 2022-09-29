@@ -129,3 +129,17 @@ go to auth - set type to bearer token
 in token - enter {accessToken}
 
 ### get single jobs
+const {user:{userId},params:{jobId}} = req
+await Job.findOne({_id:jobId,createdBy:userId})
+
+### Mongoose Errors 
+- Validate Erros
+- Duplicate Email
+- Cast Error
+
+#### Security to protect the app 
+npm install them
+- helmet
+- cors
+- xss-clean
+- express-rate-limit
