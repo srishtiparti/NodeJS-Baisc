@@ -1,0 +1,34 @@
+We can't upload any string for the image in product controller, we need the path of the image
+
+There will be 3 routes - create a product, get all product and upload image.. create product will have model with values - name, price and image (we'll get from upload image)
+
+In upload image - postman-- use form-data instead of raw
+key value (files)
+images  upload file
+install express-fileupload
+add it to app.js
+
+### Errors
+// check if file exists -req.files
+// check format - !productImage.mimetype.startsWith('image')
+// check size-productImage.size>
+
+
+### store images on cloud - to deliver faster image
+you can store on - cloudinary
+npm install cloudinary
+set config in env file
+cloudinary.config({ 
+  cloud_name: ********, 
+  api_key: *********, 
+  api_secret: **************
+});
+import it in app.js
+const cloudinary = require('cloudinary').v2
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret
+})
+
+in image.. we'll use 2 modules - cloudinary and fs 
