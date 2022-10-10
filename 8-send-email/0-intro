@@ -1,0 +1,5 @@
+// install nodemailer
+// transport service - testing - ethereal
+// prod - SendGrid-> create user-> email api->integration ->web api->nodejs
+// add key in .env file
+// npm install --save @sendgrid/mail
