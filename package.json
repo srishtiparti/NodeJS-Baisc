@@ -20,6 +20,7 @@
     "homepage": "https://github.com/srishtiparti/NodeJS-Baisc#readme",
     "dependencies": {
         "@sendgrid/mail": "^7.7.0",
+        "axios": "^1.2.1",
         "bcryptjs": "^2.4.3",
         "cloudinary": "^1.32.0",
         "cors": "^2.8.5",

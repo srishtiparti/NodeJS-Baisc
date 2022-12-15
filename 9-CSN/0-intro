@@ -1,0 +1,160 @@
+auth ->
+register
+
+login
+
+jobs->
+get job
+
+update job
+
+post job
+
+delete job
+
+models-
+Mongoose has built-in validators that can be used. We won't require to come up with logic for regex
+
+### Register Route
+
+- Validate - name, email, password - with Mongoose
+- Hash password (with bcryptjs) - use model
+- Save user Model.create({})
+- Create token jwt.sign({payload},secret,options)
+- Send response with token
+
+### store password - never store user password as strings - use hash
+
+- npm install bcryptjs
+  const { username, email, password } = req.body
+  <!-- When we were doing through controller -->
+  <!-- random  bytes= how many bytes it would get-->
+
+      const {username, password, email} = req.body
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt)
+
+      const tempUser = { username, email, password: hashedPassword }
+
+      // const user = await User.create(req.body)
+      // for mongoose to do validation
+      const user = await User.create({...tempUser })
+
+### Mongoose Middleware - pre post
+
+pre middleware functions are executed one after the another, when each middleware calls next
+const schema = new Schema(..);
+schema.pre('save', function(next) {
+// do stuff
+next();
+});
+
+But when we pass the input through schema/ middleware -> we just need to enter this in the schema
+
+userSchema.pre('save',function(next){
+const salt = await bcrypt.genSalt(10)
+this.password = await bcrypt.hash(password,salt)
+next()
+})
+you can also remove next as we are using mongoose 5x version
+we can remove the hashing code in the controller as now we are passing it through out schema
+
+### JWT TOken
+
+The token can be created in controller
+const token = jwt.sign({userID:user.\_id,name:user.username, email:user.email},process.env.jwt_secret,options)
+
+but to keep the code more organized we can create the token using instance method in models
+
+UserScheme.methods.createJWT = function(){
+return jwt.sign({userId:this.\_id,name:this.username, email:this.email}, process.env.jwt_secret,options )
+}
+
+and in controller
+where user = Schema.create({...req.body})
+const token = user.createJWT()
+
+### options
+
+expiresIn : number means second
+if you enter string - make sure you enter value
+d = days, h = hours
+by default it means ms
+expiresIn can also be set in .env
+
+Secret key can be generated using
+All keys generator - https://www.allkeysgenerator.com/
+encryption key
+better to use 256
+
+### LOGIN FUNCTIONALITY
+
+Check if the email exist = User.findOne({email:email})
+throw badrequest error if email or password is missing
+throw unauth error if the email isn't registered
+if email is registered... create a token
+display username -> name:user.username
+
+### compare passwords
+
+use bcryptjs library -
+In schema you can create another instance
+
+### Auth middleware
+
+same as jwt project..
+to look what we'll have in payload.. check model
+
+to use the auth - as we don't want people with UA access to the job to see it
+We can have for each of the Route
+or can add to main app.js
+
+### Jobs Model
+
+We have company, position and status
+But to tie it a user we can use a attribute that is linked to the user model
+it must have
+type:mongoose.Types.ObjectId,
+ref:'User'
+
+### Create job - post
+
+to post.. we used Job.create(req.body)
+but in body we need to set the user
+the user is going to be in the token - userId
+req.body.createdBy = req.user.userId
+
+### get all jobs
+
+Job.find(createdBy:req.body.userId).sort(createdAt)
+
+### set token dynamically
+
+in Postman
+in login - go to tests
+const jsonData = pm.response.json();
+pm.globals.set("accessToken",jsonData.token);
+
+go to jobs route - instead of selecting the authorization manually,
+go to auth - set type to bearer token
+in token - enter {accessToken}
+
+### get single jobs
+
+const {user:{userId},params:{jobId}} = req
+await Job.findOne({\_id:jobId,createdBy:userId})
+
+### Mongoose Errors
+
+- Validate Erros
+- Duplicate Email
+- Cast Error
+
+#### Security to protect the app
+
+npm install them
+
+- helmet
+- cors
+- xss-clean
+- express-rate-limit
